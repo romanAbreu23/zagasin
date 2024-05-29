@@ -1,0 +1,171 @@
+div(class="p-6 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-6 md:space-y-0 gap-4")
+    //- primera seccion
+    div(class="sm:w-1/4 md:w-2/6 lg:w-1/6 group")
+        //- image
+        div(class="relative overflow-hidden rounded-lg")
+            a(href=`/propiedades/editar-imagen/${property.id}`) 
+                if property.images == ''
+                    img(
+                        src=`../img/no-image-avaliable.jpg` 
+                        alt=`Imágen/es no disponible/s`
+                        class="object-cover h-auto md:h-36 w-full group-hover:scale-110 transition-all duration-500"
+                    )
+                else
+                    img(
+                        src=`../uploads/${property.images[0].name}` 
+                        alt=`Imagen propiedad ${property.title}`
+                        class="object-cover h-auto md:h-36 w-full group-hover:scale-110 transition-all duration-500"
+                    )
+    //- segunda seccion
+    div(class="sm:w-2/4 md:w-2/6 lg:w-3/6 space-y-4") 
+        //- tittle
+        a(
+            href=`/propiedad/${property.id}`
+            class="title block text-xl font-semibold text-primary hover:text-hover transition truncate"
+        )= property.title
+        //- category
+        div(class="inline-flex rounded-full text-sm font-semibold leading-5")
+            a(href=`mis-categorias/${property.categoryId}`) 
+                p(class="rounded-full px-2 text-slate-800 bg-slate-200 hover:bg-slate-300 transition")= property.category.name
+        //- price
+        p(class="text-hover text-base font-normal")= propertyPrice(property.realPrice)
+        if user.admin || user.master
+            //- messages
+            a(href=`/mensajes/${property.id}` class="text-sm text-secondary hover:text-primary transition")= `${property.messages.length} Mensajes`
+        if user.master
+            //- sección privada
+            div(class="mx-auto block md:hidden space-y-4")
+                //- <!-- item 1 -->
+                div(class="faq__item px-[30px] border-b cursor-pointer select-none")
+                    //- <!-- title & icon -->
+                    div(class="flex items-center justify-between mb-[10px]")
+                        h4 Otros datos
+                        //- <!-- icon -->
+                        div(class="faq__btn text-accent")
+                            i(class="ri-arrow-down-s-line text-2xl")
+                    //- <!-- answer text -->
+                    div(class="faq__answer h-0 overflow-hidden space-y-2")
+                        //- Fecha de creación
+                        div(class="text-base font-normal")
+                            p(class="text-accent") Creación de la publicación: 
+                                span(class="text-secondary")= dateFormat(property.createdAt)
+                        //- Fecha de actualización
+                        div(class="text-base font-normal")
+                            p(class="text-accent") Actualización de la publicación: 
+                                span(class="text-secondary")= dateFormat(property.updatedAt)
+                        //- Fecha de antigüedad
+                        div(class="text-base font-normal")
+                            p(class="text-accent") Antigüedad de la propiedad: 
+                                span(class="text-secondary")= property.antiquity
+                        //- Primer contacto
+                        div(class="flex gap-x-2 items-center text-base font-normal")
+                            p(class="text-accent") Nombre: 
+                                span(class="text-secondary")= property.contactName
+                            p(class="text-accent") Celular: 
+                                span(class="text-secondary")= property.contactTel
+                        //- Segundo contacto
+                        if property.secondContactName
+                            div(class="flex gap-x-2 items-center text-base font-normal")
+                                p(class="text-accent") Nombre: 
+                                    span(class="text-secondary")= property.secondContactName
+                                p(class="text-accent") Celular: 
+                                    span(class="text-secondary")= property.secondContactTel
+                        //- Dirección
+                        div(class="text-base font-normal")
+                            p(class="text-accent") Dirección: 
+                                span(class="text-secondary")= property.address
+                        //- Coordenadas
+                        div(class="text-base font-normal")
+                            p(class="text-accent") Latitud: 
+                                span(class="text-secondary")= property.lat
+                        div(class="text-base font-normal")
+                            p(class="text-accent") Longitud: 
+                                span(class="text-secondary")= property.lng
+                        //- Exlcusividad
+                        div(class="text-base font-normal")
+                            p(class="text-accent") Exclusividad: 
+                                span(class="text-secondary")= property.exclusive
+                        //- Comisión
+                        div(class="text-base font-normal")
+                            p(class="text-accent") Comisión pactada: 
+                                span(class="text-secondary")= property.commission
+                                span(class="text-secondary") %
+
+    //- tercera seccion
+    div(class="w-auto lg:w-2/6 xl:w-2/6 flex flex-col lg:flex-row gap-2")
+        if user.admin || user.master
+            //- published 
+            button(
+                type="button"
+                data-property-id=`${property.id}`
+                class=`change-status w-full px-3 py-3 md:py-2 text-sm leading-5 font-semibold rounded truncate cursor-pointer transition ${property.published ? 'bg-green-100 hover:bg-green-200 text-green-800' : 'bg-slate-100 hover:bg-slate-200 text-red-800'}`
+            )= `${property.published ? 'Publicado' : 'No publicado'}`
+        //- edit
+        a(
+            href=`/propiedades/editar/${property.id}`
+            class="w-full px-3 py-3 md:py-2 text-sm text-center leading-5 font-semibold rounded cursor-pointer bg-blue-100 hover:bg-blue-200 text-blue-800 transition"
+        ) Editar
+        //- delete
+        if user.master
+            button(
+                type="button"
+                data-property-id=`${property.id}`
+                class="delete-property w-full px-3 py-3 md:py-2 text-sm leading-5 font-semibold rounded cursor-pointer bg-red-100 hover:bg-red-200 text-red-800 transition"
+            ) Eliminar
+
+if user.master
+    div(class="max-w-5xl mx-auto hidden md:block py-2 space-y-2")
+        //- <!-- item 1 -->
+        div(class="faq__item px-[30px] border-b cursor-pointer select-none transition-all")
+            //- <!-- title & icon -->
+            div(class="flex items-center justify-between mb-[10px]")
+                h4 Otros datos
+                //- <!-- icon -->
+                div(class="faq__btn text-accent")
+                    i(class="ri-arrow-down-s-line text-2xl")
+            //- <!-- answer text -->
+            div(class="faq__answer h-0 overflow-hidden space-y-2")
+                //- Fecha de creación
+                div(class="text-base font-normal")
+                    p(class="text-accent") Creación de la publicación: 
+                        span(class="text-secondary")= dateFormat(property.createdAt)
+                //- Fecha de actualización
+                div(class="text-base font-normal")
+                    p(class="text-accent") Actualización de la publicación: 
+                        span(class="text-secondary")= dateFormat(property.updatedAt)
+                //- Fecha de antigüedad
+                div(class="text-base font-normal")
+                    p(class="text-accent") Antigüedad de la propiedad: 
+                        span(class="text-secondary")= property.antiquity
+                //- Primer contacto
+                div(class="flex gap-x-2 items-center text-base font-normal")
+                    p(class="text-accent") Nombre: 
+                        span(class="text-secondary")= property.contactName
+                    p(class="text-accent") Celular: 
+                        span(class="text-secondary")= property.contactTel
+                //- Segundo contacto
+                if property.secondContactName
+                    div(class="flex gap-x-2 items-center text-base font-normal")
+                        p(class="text-accent") Nombre: 
+                            span(class="text-secondary")= property.secondContactName
+                        p(class="text-accent") Celular: 
+                            span(class="text-secondary")= property.secondContactTel
+                //- Dirección
+                div(class="text-base font-normal")
+                    p(class="text-accent") Dirección: 
+                        span(class="text-secondary")= property.address
+                //- Coordenadas
+                div(class="flex gap-x-2 items-center text-base font-normal")
+                    p(class="text-accent") Latitud: 
+                        span(class="text-secondary")= property.lat
+                    p(class="text-accent") Longitud: 
+                        span(class="text-secondary")= property.lng
+                //- Exlcusividad
+                div(class="text-base font-normal")
+                    p(class="text-accent") Exclusividad: 
+                        span(class="text-secondary")= property.exclusive
+                //- Comisión
+                div(class="text-base font-normal")
+                    p(class="text-accent") Comisión pactada: 
+                        span(class="text-secondary")= property.commission
+                        span(class="text-secondary") %

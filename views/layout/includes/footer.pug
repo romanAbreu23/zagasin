@@ -1,0 +1,112 @@
+footer(class="footer pt-12 xl:pt-[150px]")
+    div(class="container mx-auto pb-12 xl:pb-[100px]")
+        div(class="flex flex-col xl:flex-row gap-x-5 gap-y-10")
+            //- footer contact section
+            div(class="footer__item flex-1")
+                //- logo
+                div(class="mb-[30px]")
+                    a(href="/") 
+                        img(
+                            src="../../img/logo.png" 
+                            alt="Logo"
+                        )
+                //- desc
+                p(class="mb-[20px]") Somos los pioneros en el Itsmo de Tehuantepec. Asesorando y brindandote confianza en bienes raices desde el 2003
+                //- location, email & phone
+                div.flex.flex-col.gap-y-3.mb-10
+                    div(class="flex items-center gap-x-[6px]")
+                        div(class="text-[24px] text-accent")
+                            include ../../../icons/location
+                        p.text-secondary Miramar 13
+                    div(class="flex items-center gap-x-[6px]")
+                        div(class="text-[24px] text-accent")
+                            include ../../../icons/mail
+                        p.text-secondary zagasinmobiliaria@email.com
+                    div(class="flex items-center gap-x-[6px]")
+                        div(class="text-[24px] text-accent")
+                            include ../../../icons/phone
+                        p.text-secondary (+971) 714 4723
+                    div(class="flex items-center gap-x-[6px]")
+                        div(class="text-[24px] text-accent")
+                            include ../../../icons/phone
+                        p.text-secondary (+971) 116 5577
+                    div(class="flex items-center gap-x-[6px]")
+                        div(class="text-[24px] text-accent")
+                            include ../../../icons/phone
+                        p.text-secondary (+552) 206 1185
+
+                //- socials
+                div(class="flex gap-[14px] text-[30px]")
+                    div(class="p-[10px] rounded-[10px] shadow-custom2 text-accent hover:text-hover cursor-pointer transition-all")
+                        i(class="ri-facebook-circle-fill")
+                    div(class="p-[10px] rounded-[10px] shadow-custom2 text-accent hover:text-hover cursor-pointer transition-all")
+                        i(class="ri-instagram-fill")
+                    div(class="p-[10px] rounded-[10px] shadow-custom2 text-accent hover:text-hover cursor-pointer transition-all")
+                        i(class="ri-twitter-fill")
+                        
+            //- footer quick links section
+            div(class="footer__items flex-1")
+                h4.h4.mb-5 Menú rapido
+                div.flex.gap-5
+                    //- list 1
+                    ul.flex-1.flex.flex-col.gap-y-5 
+                        li 
+                            a(href="/" class="hover:text-hover transition-all") Inicio
+                        if !user || !user.seller
+                            li
+                                a(href="/categorias/1" class="hover:text-hover transition-all") Propiedades
+                        else
+                            li
+                                a(href="/mis-propiedades" class="hover:text-hover transition-all") Mis propiedades
+                        li
+                            a(href="/mapa" class="hover:text-hover transition-all") Buscar en el mapa
+
+                    //- list 2
+                    ul.flex-1.flex.flex-col.gap-y-5 
+                        if !user
+                            //- login
+                            li
+                                a(href="/auth/login" class="hover:text-hover transition-all duration-300") Login
+                            //- register
+                            li
+                                a(href="/auth/registro" class="hover:text-hover transition-all duration-300") Crear cuenta
+                        else
+                            //- user
+                            li
+                                p.text-hover.capitalize.truncate= user.name
+                            //- logout
+                            li
+                                form(
+                                        action="/auth/cerrar-sesion" 
+                                        method="POST"
+                                        class="hover:text-hover transition-all duration-300"
+                                    ) 
+                                    input(
+                                        type="hidden"
+                                        name="_csrf"
+                                        value= csrfToken
+                                    )
+                                    input(
+                                        type="submit"
+                                        value="Cerrar sesión"
+                                    )
+
+            //- footer opening hours section
+            div.footer__item.flex-1
+                h4.h4.mb-5 A tu disposición
+                p.text-accent.font-medium Compras, vendes o rentas
+                    span.text-hover ... somos tu mejor opción! 
+                p.text-accent Estamos para ti las 
+                    span.text-hover 24 horas 
+                    span del día, los 
+                    span.text-hover 7 días 
+                    span de la semana y los 
+                    span.text-hover 365 días 
+                    span del año.
+
+    //- copyright
+    div(class="py-[30px] border-t")
+        div.container.mx-auto.text-center
+            p.font-light.text-base &copy; 
+                span= year
+                span  Zagas Inmobiliaria - Todos los derechos reservados

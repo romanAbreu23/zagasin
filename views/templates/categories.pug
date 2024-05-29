@@ -1,0 +1,219 @@
+//- categories-mobiles
+//- <!-- item wrapper -->
+div(class="max-w-5xl mx-auto block lg:hidden mb-5")
+    //- <!-- item 1 -->
+    div(class="faq__item px-[30px] pt-7 pb-4 border-b cursor-pointer select-none")
+        //- <!-- title & icon -->
+        div(class="flex items-center justify-between mb-[10px]")
+            //- <!-- title -->
+            h4(class="h4") Selecciona una categoria
+            //- <!-- icon -->
+            div(class="faq__btn text-accent")
+                i(class="ri-arrow-down-s-line text-2xl")
+        //- <!-- answer text -->
+        div(class="faq__answer h-0 overflow-hidden")
+            ul(class="font-light")
+                li
+                    //- Casas
+                    a(
+                        href="/categorias/1"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/home
+                        span Casas
+                li
+                    //- Departamentos
+                    a(
+                        href="/categorias/2"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/properties
+                        span Departamentos
+                li
+                    //- Terenos
+                    a(
+                        href="/categorias/3"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/land
+                        span Terrenos
+                li
+                    //- Fincas/Ranchos
+                    a(
+                        href="/categorias/4"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/ranch
+                        span Fincas/Ranchos
+                li
+                    //- Bodegas
+                    a(
+                        href="/categorias/5"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/store
+                        span Bodegas
+                li
+                    //- Naves
+                    a(
+                        href="/categorias/6"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/bigStore
+                        span Naves
+                li
+                    //- Locales
+                    a(
+                        href="/categorias/7"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/locals
+                        span Locales
+                li
+                    //- Consultorio
+                    a(
+                        href="/categorias/8"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/consultingRoom
+                        span Consultorios
+                li
+                    //- Oficina
+                    a(
+                        href="/categorias/9"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/office
+                        span Oficinas
+                li
+                    //- Edificios
+                    a(
+                        href="/categorias/10"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/departments
+                        span Edificios
+                li
+                    //- Hotel
+                    a(
+                        href="/categorias/11"
+                        class="flex items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                    )
+                        p.text-secondary
+                            include ../../icons/building
+                        span Hoteles
+//- categories-desc
+div(class="py-5 hidden lg:block")
+        //- list
+        ul.container.mx-auto.flex.justify-between.gap-x-4
+            li
+                //- Casas
+                a(
+                    href="/categorias/1"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/home
+                    span Casas
+            li
+                //- Departamentos
+                a(
+                    href="/categorias/2"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/properties
+                    span Departamentos
+            li
+                //- Terrenos
+                a(
+                    href="/categorias/3"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/land
+                    span Terrenos
+            li
+                //- Fincas/Ranchos
+                a(
+                    href="/categorias/4"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/ranch
+                    span Fincas/Ranchos
+            li
+                //- Bodegas
+                a(
+                    href="/categorias/5"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/store
+                    span Bodegas
+        //- list
+        ul.container.mx-auto.flex.justify-around.gap-x-4.mt-4
+            li
+                //- Naves
+                a(
+                    href="/categorias/6"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/bigStore
+                    span Naves
+            li
+                //- Locales
+                a(
+                    href="/categorias/7"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/locals
+                    span Locales
+            li
+                //- Consultorios
+                a(
+                    href="/categorias/8"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/consultingRoom
+                    span Consultorios
+            li
+                //- Oficinas
+                a(
+                    href="/categorias/9"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/office
+                    span Oficinas
+            li
+                //- Edificios
+                a(
+                    href="/categorias/10"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/departments
+                    span Edificios
+            li
+                //- Hoteles
+                a(
+                    href="/categorias/11"
+                    class="flex justify-center items-center gap-x-2 lg:justify-normal hover:text-hover transition-all duration-300"
+                )
+                    p.text-secondary
+                        include ../../icons/building
+                    span Hoteles
